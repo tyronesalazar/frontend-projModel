@@ -16,7 +16,7 @@ import { ConfirmacionPago } from './pages/main/pago/confirmacion-pago/confirmaci
 import { PedidosUsuario } from './pages/user/pedidos/pedidosUsuario';
 
 export const routes: Routes = [
-  { path: '', canActivate: [authGuard], component: Main },
+  { path: '', component: Main },
   {
     path: 'login',
     // canActivate: [authGuard],
