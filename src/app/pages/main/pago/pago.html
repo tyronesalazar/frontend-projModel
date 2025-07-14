@@ -1,0 +1,103 @@
+<div class="pago-container">
+  <h1>💳 Selecciona tu método de pago</h1>
+  <div class="volver-wrap">
+    <button class="volver-btn" routerLink="/menu">← Volver al menú</button>
+  </div>
+
+  <div class="metodos-pago">
+    <label>
+      <input
+        type="radio"
+        name="pago"
+        [(ngModel)]="metodoPago"
+        value="efectivo"
+      />
+      Pago en efectivo
+    </label>
+    <label>
+      <input
+        type="radio"
+        name="pago"
+        [(ngModel)]="metodoPago"
+        value="tarjeta"
+      />
+      Pago con tarjeta
+    </label>
+  </div>
+
+  <!-- Mostrar total siempre -->
+  <div class="total-section" *ngIf="total">
+    <h2>
+      Total a pagar: <span>${{ total | number : "1.2-2" }}</span>
+    </h2>
+  </div>
+
+  <!-- EFECTIVO -->
+  <div class="efectivo-section" *ngIf="metodoPago === 'efectivo'">
+    <p class="info">Un mesero se acercará a tu mesa para recoger el pago.</p>
+    <button class="confirmar-btn" (click)="confirmarPago('efectivo')">
+      Confirmar pago en efectivo
+    </button>
+  </div>
+
+  <!-- TARJETA -->
+  <div class="tarjeta-section" *ngIf="metodoPago === 'tarjeta'">
+    <form (ngSubmit)="confirmarPago('tarjeta')">
+      <label>
+        Nombre en la tarjeta:
+        <input
+          type="text"
+          [(ngModel)]="datosTarjeta.nombre"
+          name="nombre"
+          required
+        />
+      </label>
+
+      <label>
+        Número de tarjeta:
+        <input
+          type="text"
+          [(ngModel)]="datosTarjeta.numero"
+          name="numero"
+          maxlength="16"
+          required
+        />
+      </label>
+
+      <label>
+        Fecha de expiración:
+        <input
+          type="month"
+          [(ngModel)]="datosTarjeta.expiracion"
+          name="expiracion"
+          required
+        />
+      </label>
+
+      <label>
+        CVV:
+        <input
+          type="password"
+          [(ngModel)]="datosTarjeta.cvv"
+          name="cvv"
+          maxlength="4"
+          required
+        />
+      </label>
+
+      <label>
+        Banco:
+        <input
+          type="text"
+          [(ngModel)]="datosTarjeta.banco"
+          name="banco"
+          required
+        />
+      </label>
+
+      <button type="submit" class="confirmar-btn">
+        Confirmar pago con tarjeta
+      </button>
+    </form>
+  </div>
+</div>

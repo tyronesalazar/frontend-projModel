@@ -1,0 +1,354 @@
+.personalizacion-wrapper {
+  background-color: #fdf6f0;
+  min-height: 100vh;
+  padding: 24px 0;
+}
+
+.personalizacion-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--shadow);
+  padding: 24px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.card-selectable {
+  flex: 0 0 auto;
+  width: 100px;
+  border: 2px solid transparent;
+  border-radius: 14px;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.card-selectable:hover {
+  transform: scale(1.05);
+  border-color: var(--accent);
+}
+
+.card-selectable.selected {
+  border-color: var(--primary);
+  background-color: #fff4f0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.cantidad button {
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  border-radius: 6px;
+  background-color: var(--accent);
+  transition: background-color 0.2s ease;
+}
+
+.cantidad button:hover:not(:disabled) {
+  background-color: var(--primary);
+}
+
+.personalizacion-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 16px;
+  font-family: sans-serif;
+  padding-bottom: 10vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plato-img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin: 16px 0;
+}
+.plato-img:hover {
+  transform: scale(1.02);
+}
+section {
+  margin-bottom: 24px;
+}
+
+h2 {
+  margin-bottom: 4px;
+  color: #cf302a;
+}
+
+.info {
+  font-size: 13px;
+  color: #875638;
+  margin-bottom: 8px;
+}
+
+.card-grid {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  padding-top: 4px;
+  scroll-padding: 0 16px;
+  /* Esto es clave */
+  overflow: visible;
+}
+
+.card-selectable {
+  flex: 0 0 auto;
+  width: 100px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #fff8f5;
+  transition: border 0.3s ease;
+}
+
+.card-selectable.selected {
+  border-color: #cf302a;
+  background-color: #ffe9e7;
+}
+
+.card-selectable img {
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.extra-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.extra-item {
+  width: 100px;
+  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 150px;
+}
+.extra-item:hover {
+  transform: translateY(-4px);
+}
+.extra-item img {
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 4px;
+}
+
+.cantidad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.cantidad button {
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #e0782f;
+  color: white;
+  cursor: pointer;
+}
+
+.salsa-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.salsa-grid label {
+  padding: 8px;
+  background: var(--input-bg);
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.salsa-grid label:hover {
+  background-color: #fbe7dc;
+}
+
+.barra-final {
+  backdrop-filter: blur(6px);
+  border-top: 2px solid var(--yellow);
+}
+
+.barra-final button:not(:disabled):hover {
+  background-color: #b94f1c;
+}
+
+.boton-final {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.boton-final button {
+  background-color: #cf302a;
+  color: white;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.volver-wrap {
+  margin-bottom: 12px;
+}
+
+.boton-volver {
+  background-color: #fff;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.boton-volver:hover {
+  background-color: var(--accent);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.total {
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--primary);
+  margin-top: 8px;
+}
+
+.barra-final {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff8f5;
+  border-top: 2px solid #eccb6c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  z-index: 10;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.total-precio {
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--primary);
+}
+
+.barra-final button {
+  background-color: var(--primary);
+  color: white;
+  font-weight: bold;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.barra-final button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  color: #666;
+}
+
+@media (max-width: 480px) {
+  .card-grid,
+  .extra-grid {
+    gap: 8px;
+  }
+
+  .card-selectable,
+  .extra-item {
+    width: 80px;
+  }
+
+  .personalizacion-container {
+    padding: 16px;
+  }
+
+  .barra-final {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+.titulo-plato {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+  text-align: center;
+  position: relative;
+}
+
+.titulo-plato::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent);
+  margin: 6px auto 0;
+  border-radius: 2px;
+}
+
+.header-favorito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-favorito {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #ccc;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-favorito:hover {
+  transform: scale(1.1);
+  color: #cf302a;
+}
+
+.btn-favorito .favorito {
+  color: #ffc107; /* dorado cuando está marcado */
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,151 @@
+.pago-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 24px;
+  background: #fff8f5;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+  font-family: sans-serif;
+}
+
+.pago-container h1 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.metodos-pago {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.metodos-pago button {
+  flex: 1 1 180px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 2px solid var(--accent);
+  background: #fff;
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.metodos-pago button.active {
+  background-color: var(--accent);
+  color: white;
+  transform: scale(1.02);
+}
+
+.metodos-pago button:hover {
+  background-color: #fbe7dc;
+}
+
+.total-section {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.total-section h2 {
+  color: var(--accent);
+  font-size: 20px;
+}
+
+.total-section span {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.tarjeta-section,
+.efectivo-section {
+  margin-bottom: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+input {
+  padding: 10px 12px;
+  border: 2px solid #eccb6c;
+  border-radius: 10px;
+  margin-top: 4px;
+  background-color: #fff;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.confirmar-btn {
+  background-color: var(--primary);
+  color: white;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.confirmar-btn:hover {
+  background-color: #b52a22;
+}
+
+.info {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.volver-wrap {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.volver-btn {
+  background-color: #fff;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.volver-btn:hover {
+  background-color: var(--accent);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.metodos-pago button {
+  outline: none;
+}
+
+.metodos-pago button:focus {
+  outline: none;
+  box-shadow: none;
+}

@@ -1,0 +1,102 @@
+<div class="pedidos-container">
+  <!-- Banner -->
+  <div class="carrito-banner">
+    <h1>🛒 Mi carrito</h1>
+  </div>
+
+  <!-- Botón volver -->
+  <div class="volver-wrap">
+    <button class="boton-volver" routerLink="/menu">← Volver al menú</button>
+  </div>
+
+  <!-- Lista pedidos -->
+  <div *ngIf="!isLoading; else loadingTemplate">
+    <div class="pedido-card" *ngFor="let pedido of carrito">
+      <div class="header">
+        <h2>{{ pedido.nombre_plato }}</h2>
+        <div class="pedido-actions">
+          <span class="total">Subtotal: ${{ pedido.subtotal }}</span>
+          <button
+            class="eliminar-btn"
+            (click)="eliminarPedido(pedido.carrito_id)"
+            aria-label="Eliminar pedido"
+          >
+            ✖
+          </button>
+        </div>
+      </div>
+
+      <p><strong>Cantidad:</strong> {{ pedido.cantidad }}</p>
+
+      <div class="detalle">
+        <ng-container *ngFor="let tipo of tiposIngrediente">
+          <ng-container
+            *ngIf="filtrarIngredientes(pedido.ingredientes, tipo).length"
+          >
+            <p>
+              <strong
+                >{{ tipo.charAt(0).toUpperCase() + tipo.slice(1) }}:</strong
+              >
+            </p>
+            <ul>
+              <li
+                *ngFor="
+                  let ing of agruparIngredientes(
+                    filtrarIngredientes(pedido.ingredientes, tipo)
+                  )
+                "
+              >
+                {{ ing.nombre
+                }}<span *ngIf="ing.cantidad > 1"> × {{ ing.cantidad }}</span>
+              </li>
+            </ul>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <ng-template #loadingTemplate>
+    <div *ngFor="let i of [1, 2, 3]">
+      <div class="pedido-card">
+        <ngx-skeleton-loader
+          count="1"
+          [theme]="{ height: '24px', width: '60%', 'margin-bottom': '12px' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          count="1"
+          [theme]="{ height: '16px', width: '40%', 'margin-bottom': '16px' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          count="3"
+          [theme]="{ height: '12px', width: '80%', 'margin-bottom': '6px' }"
+        ></ngx-skeleton-loader>
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- Finalizar -->
+  <div class="finalizar-wrap" *ngIf="!isLoading && carrito.length">
+    <div class="nota-mesa-wrap">
+      <label for="mesaCliente"><strong>Número de mesa:</strong></label>
+      <input
+        type="number"
+        id="mesaCliente"
+        [(ngModel)]="mesaCliente"
+        placeholder="Ej: 12"
+        class="mesa-input"
+        min="1"
+      />
+    </div>
+
+    <div class="finalizar-info">
+      <span class="finalizar-total"
+        >Total: ${{ calcularTotalCarrito() | number : "1.2-2" }}</span
+      >
+      <button class="finalizar-btn" (click)="finalizarPedido()">
+        ✅ Finalizar pedido
+      </button>
+    </div>
+  </div>
+</div>

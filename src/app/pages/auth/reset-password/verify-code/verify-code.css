@@ -1,0 +1,89 @@
+.container {
+  max-width: 400px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+h2 {
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 90%;
+  padding: 14px;
+  margin: 16px 0;
+  border: 2px solid var(--text-secondary);
+  border-radius: 12px;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 6px var(--input-focus);
+  background-color: #fff;
+}
+.button {
+  width: 100%;
+  cursor: pointer;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.link-button {
+  margin-top: 20px;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  background-color: var(--accent);
+}
+
+.button:disabled {
+  background-color: var(--disable);
+  cursor: not-allowed;
+}
+
+.code-simulation-banner {
+  background-color: #fef3c7;
+  border: 1px solid #facc15;
+  color: #92400e;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.code-number {
+  font-weight: bold;
+  color: var(--primary);
+  font-size: 18px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

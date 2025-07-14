@@ -1,0 +1,46 @@
+<div class="login-container">
+  <form class="login-form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <h2 class="title">Iniciar Sesión</h2>
+    <p class="subtitle">¡Bienvenido de nuevo, te extrañamos!</p>
+
+    <input
+      type="email"
+      name="username"
+      [(ngModel)]="username"
+      required
+      placeholder="Correo electrónico"
+      class="input"
+    />
+
+    <input
+      type="password"
+      name="password"
+      [(ngModel)]="password"
+      minlength="8"
+      required
+      placeholder="Contraseña"
+      class="input"
+    />
+
+    <div class="forgot-password">
+      <a routerLink="/reset-password/request-email"
+        >¿Olvidaste tu contraseña?</a
+      >
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="!loginForm.valid || isLoading"
+      class="login-button"
+    >
+      <span *ngIf="!isLoading">Iniciar sesión</span>
+      <span *ngIf="isLoading" class="spinner"></span>
+    </button>
+
+    <p class="register-link">
+      ¿No tienes cuenta? <a routerLink="/register">Crea una cuenta</a>
+    </p>
+
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </form>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>Recuperar contraseña</h2>
+  <p>
+    Ingresa tu correo electrónico y te enviaremos un código de verificación para
+    continuar con el proceso
+  </p>
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="email"
+      placeholder="Correo electrónico"
+      required
+      class="input"
+    />
+
+    <button
+      type="submit"
+      class="button"
+      [disabled]="!loginForm.valid || isLoading"
+    >
+      <span *ngIf="!isLoading">Recuperar contraseña</span>
+      <span *ngIf="isLoading" class="spinner"></span>
+    </button>
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </form>
+
+  <button class="link-button" (click)="goBack()">← Volver</button>
+</div>

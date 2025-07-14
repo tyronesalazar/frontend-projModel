@@ -1,0 +1,77 @@
+<div class="menu-wrapper">
+  <div class="menu-container">
+    <div class="menu-container">
+      <!-- Encabezado superior con nombre y logo -->
+      <div class="top-header">
+        <div class="restaurant-name">DineFast</div>
+        <img src="logoBanner.webp" alt="Logo" class="restaurant-logo" />
+      </div>
+
+      <!-- Banner superior -->
+      <div class="banner">
+        <img
+          src="banner-comida.webp"
+          alt="Banner menú"
+          class="banner-img"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Secciones -->
+
+      <div *ngIf="!isLoading">
+        <section class="category">
+          <h2 class="category-title">Platos Favoritos</h2>
+          <div class="grid">
+            @for (plato of menuFavorites; track plato.id) {
+            <div class="menu-card" (click)="verPlato(plato.id)">
+              <img
+                [src]="plato.imagen_url"
+                alt="{{ plato.nombre }}"
+                loading="lazy"
+                class="menu-img"
+              />
+              <h3>{{ plato.nombre }}</h3>
+              <p class="price">$ {{ plato.precio }}</p>
+              <button class="add-button" (click)="agregar(plato)">
+                Agregar
+              </button>
+            </div>
+            } @empty {
+            <p>No hay platos favoritos</p>
+            }
+          </div>
+        </section>
+        <section class="category">
+          <h2 class="category-title">Platos Principales</h2>
+          <div class="grid" *ngIf="!errorGettinAll; else error">
+            @for (plato of menuItems; track plato.id) {
+            <div class="menu-card" (click)="verPlato(plato.id)">
+              <img
+                [src]="plato.imagen_url"
+                [alt]="plato.nombre"
+                class="menu-img"
+                loading="lazy"
+              />
+              <h3>{{ plato.nombre }}</h3>
+              <p class="price">$ {{ plato.precio }}</p>
+              <button class="add-button" (click)="agregar(plato)">
+                Agregar
+              </button>
+            </div>
+            }
+          </div>
+        </section>
+        <!-- Botón flotante para ir a pedidos -->
+        <button
+          class="btn-pedidos"
+          routerLink="/menu/carrito"
+          aria-label="Ir a pedidos"
+        >
+          🛒 Ver carrito
+        </button>
+      </div>
+      <ng-template #error> Error al obtener los platos </ng-template>
+    </div>
+  </div>
+</div>

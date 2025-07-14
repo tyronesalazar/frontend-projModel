@@ -1,0 +1,17 @@
+<div class="confirmacion-container">
+  <div class="mensaje-card">
+    <h1>✅ ¡Pago confirmado!</h1>
+    <div *ngIf="!isLoading" class="mensaje-card-content">
+      <p *ngIf="tipo === 'efectivo'">
+        Un mesero se acercará a tu mesa <strong>#{{ mesa }}</strong> a recoger
+        el pago en efectivo.
+      </p>
+
+      <p *ngIf="tipo === 'tarjeta'">
+        Tu pago con tarjeta ha sido procesado con éxito. ¡Gracias por tu compra!
+        🍽️
+      </p>
+    </div>
+    <button class="boton-volver" routerLink="/menu">← Volver al menú</button>
+  </div>
+</div>

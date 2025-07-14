@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="code-simulation-banner">
+    <strong>Simulación:</strong> hemos enviado el código a tu correo<br />
+    <strong>Tu código es:</strong> <span class="code-number">{{ code }}</span>
+  </div>
+
+  <h2>Verificar código</h2>
+  <p>Hemos enviado un código de 6 digitos a tu correo electrónico</p>
+  <form (ngSubmit)="onVerify()" #loginForm="ngForm">
+    <input
+      type="text"
+      name="userCode"
+      [(ngModel)]="userCode"
+      placeholder="Ingresa el código"
+      minlength="6"
+      maxlength="6"
+      max="6"
+      required
+      class="input"
+    />
+
+    <button
+      type="submit"
+      [disabled]="!loginForm.valid || isLoading"
+      class="button"
+    >
+      <span *ngIf="!isLoading">Verificar código</span>
+      <span *ngIf="isLoading" class="spinner"></span>
+    </button>
+    <p *ngIf="error" class="error">{{ error }}</p>
+
+    <button class="link-button" (click)="goBack()">← Volver</button>
+  </form>
+</div>

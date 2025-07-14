@@ -1,0 +1,121 @@
+<div class="personalizacion-wrapper">
+  <div class="personalizacion-container">
+    @if (!loading) {
+
+    <div class="personalizacion-container">
+      <div class="header header-favorito">
+        <h1 class="titulo-plato">{{ plato.nombre }}</h1>
+        <button
+          class="btn-favorito"
+          (click)="marcarFavorito()"
+          [attr.aria-label]="
+            esFavorito ? 'Quitar de favoritos' : 'Agregar a favoritos'
+          "
+          [disabled]="isLoadingFavorito"
+        >
+          <!-- add spinner -->
+          @if (isLoadingFavorito) {
+          <span class="spinner"></span>
+          } @else {
+          <span [ngClass]="{ favorito: esFavorito }">★</span>
+          }
+        </button>
+      </div>
+
+      <img [src]="plato.imagen_url" alt="imagen del plato" class="plato-img" />
+
+      <!-- BASE -->
+      <div class="volver-wrap">
+        <button class="boton-volver" routerLink="/menu">
+          ← Volver al menú
+        </button>
+      </div>
+
+      <section>
+        <h2>Base</h2>
+        <p class="info">Solo se puede agregar una base</p>
+        <div class="card-grid">
+          <div
+            class="card-selectable"
+            *ngFor="let base of baseOpciones"
+            [class.selected]="seleccion.base === base.nombre"
+            (click)="seleccion.base = base.nombre"
+          >
+            <img
+              [src]="'https://i.imgur.com/' + extraerId(base.img) + '.jpeg'"
+              alt="{{ base.nombre }}"
+            />
+            <span>{{ base.nombre }}</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROTEÍNA -->
+      <section>
+        <h2>Proteína</h2>
+        <p class="info">Solo se puede agregar una proteína</p>
+        <div class="card-grid">
+          <div
+            class="card-selectable"
+            *ngFor="let prot of proteinaOpciones"
+            [class.selected]="seleccion.proteina === prot.nombre"
+            (click)="seleccion.proteina = prot.nombre"
+          >
+            <img
+              [src]="'https://i.imgur.com/' + extraerId(prot.img) + '.jpeg'"
+              alt="{{ prot.nombre }}"
+            />
+            <span>{{ prot.nombre }}</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPPINGS CON CANTIDAD -->
+      <section>
+        <h2>Extras</h2>
+        <div class="extra-grid">
+          <div class="extra-item" *ngFor="let extra of extraOpciones">
+            <img [src]="extra.img" alt="{{ extra.nombre }}" />
+            <span>{{ extra.nombre }}</span>
+            <div class="cantidad">
+              <button
+                (click)="cambiarCantidad(extra, -1)"
+                [disabled]="extra.cantidad <= 0"
+              >
+                -
+              </button>
+              <span>{{ extra.cantidad }}</span>
+              <button (click)="cambiarCantidad(extra, 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SALSAS -->
+      <section>
+        <h2>Salsas</h2>
+        <p class="info">Puedes elegir varias</p>
+        <div class="salsa-grid">
+          <label *ngFor="let salsa of salsaOpciones">
+            <input type="checkbox" [(ngModel)]="salsa.seleccionada" />
+            {{ salsa.nombre }}
+          </label>
+        </div>
+      </section>
+
+      <div class="barra-final">
+        <span class="total-precio"
+          >Total: ${{ calcularTotal() | number : "1.2-2" }}</span
+        >
+        <button
+          [disabled]="!seleccion.base || !seleccion.proteina"
+          (click)="agregarAlPedido()"
+        >
+          <span *ngIf="!isLoading">Agregar al pedido</span>
+          <span *ngIf="isLoading" class="spinner"></span>
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+</div>

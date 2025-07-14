@@ -1,0 +1,45 @@
+<div class="cocina-container">
+  <h2>📋 Pedidos recibidos</h2>
+
+  <div *ngFor="let pedido of pedidos" class="pedido-cocina">
+    <h3>Mesa {{ pedido.mesa }} - Estado: {{ pedido.estado }}</h3>
+    <p><strong>Nota:</strong> {{ pedido.nota || "Sin nota" }}</p>
+
+    <div *ngFor="let plato of pedido.platos">
+      <h4>{{ plato.nombre_plato }} x{{ plato.cantidad }}</h4>
+      <p><strong>Subtotal:</strong> ${{ plato.subtotal }}</p>
+
+      <div *ngIf="plato.ingredientes.length">
+        <p><strong>Ingredientes personalizados:</strong></p>
+        <ul>
+          <li *ngFor="let ing of plato.ingredientes">
+            {{ ing.nombre }}
+            <span
+              [ngClass]="ing.accion === 'agregado' ? 'agregado' : 'eliminado'"
+            >
+              ({{ ing.accion === "agregado" ? "🟢 agregado" : "🔴 eliminado" }})
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Si aún no se ha estimado -->
+    <div *ngIf="!pedido.estimadoMinutos">
+      <label>Tiempo estimado de entrega (minutos):</label>
+      <input type="number" [(ngModel)]="pedido.estimadoInput" min="1" />
+      <button (click)="enviarEstimado(pedido)">Enviar estimado</button>
+    </div>
+
+    <!-- Si ya se estimó pero aún no está listo -->
+    <div *ngIf="pedido.estimadoMinutos && !pedido.platilloListo">
+      <p>🕒 Entrega estimada en: {{ pedido.estimadoMinutos }} minutos</p>
+      <button (click)="marcarPlatilloListo(pedido)">Marcar como listo</button>
+    </div>
+
+    <!-- Si ya está listo -->
+    <div *ngIf="pedido.platilloListo">
+      <p class="listo">✅ Platillo listo para entrega</p>
+    </div>
+  </div>
+</div>

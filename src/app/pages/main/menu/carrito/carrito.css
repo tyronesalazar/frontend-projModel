@@ -1,0 +1,185 @@
+.pedidos-container {
+  background-color: #ffffff;
+  max-width: 680px;
+  margin: auto;
+  padding: 16px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Banner */
+.carrito-banner {
+  background-color: var(--accent);
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.carrito-banner h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.carrito-banner h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Botón volver */
+.volver-wrap {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.boton-volver {
+  background-color: #fff;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.boton-volver:hover {
+  background-color: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Tarjetas de pedido */
+.pedido-card {
+  background: #fff8f5;
+  border: 2px solid #eccb6c;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pedido-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h2 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 20px;
+}
+
+.total {
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.detalle p {
+  margin: 6px 0 4px;
+}
+
+.detalle ul {
+  padding-left: 20px;
+  margin: 0 0 10px;
+  list-style: disc;
+}
+
+.pedido-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eliminar-btn {
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.eliminar-btn:hover {
+  color: #a52118;
+}
+
+/* Finalizar */
+.finalizar-wrap {
+  position: sticky;
+  bottom: 0;
+  background: #fff8f5;
+  border-top: 2px solid #eccb6c;
+  padding: 16px;
+  margin-top: 24px;
+  z-index: 20;
+  border-radius: 0 0 16px 16px;
+}
+
+.finalizar-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.finalizar-total {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.finalizar-btn {
+  background-color: var(--primary);
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.finalizar-btn:hover {
+  background-color: #b52a22;
+  transform: scale(1.02);
+}
+
+/* Skeleton */
+ngx-skeleton-loader {
+  display: block;
+  background-color: #fceae7 !important;
+}
+
+.nota-mesa-wrap {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nota-input,
+.mesa-input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}

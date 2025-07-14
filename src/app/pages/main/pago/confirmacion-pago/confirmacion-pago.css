@@ -1,0 +1,43 @@
+.confirmacion-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: #fff8f5;
+  padding: 24px;
+}
+
+.mensaje-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+  text-align: center;
+  max-width: 400px;
+}
+
+.mensaje-card h1 {
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+.mensaje-card p {
+  font-size: 16px;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.boton-volver {
+  background-color: var(--primary);
+  color: white;
+  font-weight: bold;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-volver:hover {
+  background-color: #b52a22;
+}

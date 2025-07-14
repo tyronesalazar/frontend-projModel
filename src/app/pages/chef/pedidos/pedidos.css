@@ -1,0 +1,95 @@
+.cocina-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.pedido-cocina {
+  background-color: #ffffff;
+  border: 2px solid #dddddd;
+  border-left: 5px solid #007bff;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.pedido-cocina h3 {
+  font-size: 18px;
+  color: #333333;
+  margin-bottom: 12px;
+}
+
+.pedido-cocina h4 {
+  font-size: 16px;
+  color: #444444;
+  margin-bottom: 6px;
+}
+
+.pedido-cocina p {
+  font-size: 14px;
+  color: #555555;
+  margin: 4px 0;
+}
+
+.pedido-cocina ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.pedido-cocina li {
+  font-size: 14px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.pedido-cocina li span {
+  margin-left: 6px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.agregado {
+  color: #28a745;
+}
+
+.eliminado {
+  color: #dc3545;
+}
+
+.listo {
+  color: #28a745;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+input[type="number"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 120px;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 6px 12px;
+  background-color: #17a2b8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #138496;
+}
