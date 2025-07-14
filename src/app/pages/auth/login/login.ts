@@ -32,7 +32,7 @@ export class Login {
     this.http.login(this.username, this.password).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.token);
-        if (response.rol == 'cocinero') {
+        if (response.rol === 'cocinero') {
           this.router.navigate(['/cocina/pedidos']);
         } else {
           this.router.navigate(['/menu']);

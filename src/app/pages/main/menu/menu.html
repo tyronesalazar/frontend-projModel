@@ -33,9 +33,7 @@
               />
               <h3>{{ plato.nombre }}</h3>
               <p class="price">$ {{ plato.precio }}</p>
-              <button class="add-button" (click)="agregar(plato)">
-                Agregar
-              </button>
+              <button class="add-button">Agregar</button>
             </div>
             } @empty {
             <p>No hay platos favoritos</p>
@@ -55,9 +53,7 @@
               />
               <h3>{{ plato.nombre }}</h3>
               <p class="price">$ {{ plato.precio }}</p>
-              <button class="add-button" (click)="agregar(plato)">
-                Agregar
-              </button>
+              <button class="add-button">Agregar</button>
             </div>
             }
           </div>
@@ -69,6 +65,19 @@
           aria-label="Ir a pedidos"
         >
           🛒 Ver carrito
+        </button>
+        <!-- Botón flotante con notificación para ver pedidos -->
+        <button
+          (click)="toggleNotification()"
+          class="btn-pedidos"
+          [class.btn-notification]="notification"
+          routerLink="/user/pedidos"
+          [queryParams]="{ id: 1 }"
+          aria-label="Ver tus pedidos"
+          style="bottom: 80px; position: fixed"
+        >
+          📦 Ver tus pedidos
+          <span *ngIf="notification" class="notification-badge">1</span>
         </button>
       </div>
       <ng-template #error> Error al obtener los platos </ng-template>

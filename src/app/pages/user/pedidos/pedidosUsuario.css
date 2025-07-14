@@ -1,0 +1,173 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  font-size: var(--font-base);
+  color: var(--text-dark);
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.estado-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 16px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 16px 0;
+  color: var(--primary);
+  text-align: center;
+}
+
+.volver-btn {
+  display: inline-block;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.volver-btn:hover {
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  box-shadow: 0 6px 12px var(--shadow);
+  transform: translateY(-2px);
+}
+
+.volver-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px var(--shadow);
+}
+
+.pedido-box {
+  border: 2px solid #eccb6c;
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 24px;
+  background: var(--bg-light);
+}
+
+.pedido-info {
+  margin-bottom: 12px;
+}
+
+.pedido-info h2 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.pedido-info p {
+  margin: 4px 0;
+  font-size: var(--font-small);
+}
+
+.plato-card {
+  border: 1px solid #e0c580;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+  background-color: #fffdf5;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.total {
+  font-weight: bold;
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.detalle p {
+  margin: 6px 0 4px;
+  font-size: var(--font-small);
+}
+
+.detalle ul {
+  padding-left: 20px;
+  margin: 0 0 10px;
+  font-size: var(--font-small);
+}
+
+/* RESPONSIVE: para pantallas más grandes */
+@media (min-width: 768px) {
+  .estado-container {
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .volver-btn {
+    font-size: 16px;
+    padding: 12px 28px;
+  }
+
+  .pedido-info h2 {
+    font-size: 1.4rem;
+  }
+
+  .header h3 {
+    font-size: 1.1rem;
+  }
+}
+/* Badge visual para estados */
+.estado-espera,
+.estado-preparacion,
+.estado-listo {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 6px;
+  color: white;
+}
+
+.estado-espera {
+  background-color: #f39c12; /* naranja */
+}
+
+.estado-preparacion {
+  background-color: #2980b9; /* azul */
+}
+
+.estado-listo {
+  background-color: #27ae60; /* verde */
+}
+
+.clickable {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.clickable:hover {
+  background-color: #fff3e0;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  margin-left: 8px;
+  font-size: 0.8em;
+}
+
+.arrow.up {
+  transform: rotate(180deg);
+}

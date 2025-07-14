@@ -7,10 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class AuthServices {
   private apiUrl = 'https://backend-projmodel.onrender.com/';
+  // private apiUrl = 'http://localhost:3000/';
   private loginUrl = this.apiUrl + 'api/usuarios/login';
   private registerUrl = this.apiUrl + 'api/usuarios/create';
   private verifyEmailUrl = this.apiUrl + 'api/usuarios/check-email';
   private updatePasswordUrl = this.apiUrl + 'api/usuarios/update-password';
+  private getPedidosUsuarioUrl = this.apiUrl + 'api/usuarios/pedidos/all';
 
   constructor(private http: HttpClient) {}
   login(correo: string, contrasena: string): Observable<any> {
@@ -48,5 +50,10 @@ export class AuthServices {
       { correo, password },
       { headers: { 'Content-Type': 'application/json' } }
     );
+  }
+  obtenerPedidosUsuario(): Observable<any> {
+    return this.http.get(this.getPedidosUsuarioUrl, {
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }

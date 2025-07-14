@@ -1,95 +1,173 @@
-.cocina-container {
-  max-width: 900px;
-  margin: 0 auto;
+.contenedor-ordenes {
+  font-family: "Segoe UI", sans-serif;
   padding: 24px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: var(--input-bg); /* antes #fff6ef */
 }
 
-.pedido-cocina {
-  background-color: #ffffff;
-  border: 2px solid #dddddd;
-  border-left: 5px solid #007bff;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.pedido-cocina h3 {
-  font-size: 18px;
-  color: #333333;
-  margin-bottom: 12px;
-}
-
-.pedido-cocina h4 {
-  font-size: 16px;
-  color: #444444;
-  margin-bottom: 6px;
-}
-
-.pedido-cocina p {
-  font-size: 14px;
-  color: #555555;
-  margin: 4px 0;
-}
-
-.pedido-cocina ul {
-  list-style-type: none;
-  padding-left: 0;
-  margin-top: 4px;
-  margin-bottom: 12px;
-}
-
-.pedido-cocina li {
-  font-size: 14px;
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-}
-
-.pedido-cocina li span {
-  margin-left: 6px;
-  font-weight: bold;
-  font-size: 13px;
-}
-
-.agregado {
-  color: #28a745;
-}
-
-.eliminado {
-  color: #dc3545;
-}
-
-.listo {
-  color: #28a745;
-  font-weight: bold;
-  font-size: 16px;
-  margin-top: 8px;
-}
-
-input[type="number"] {
-  padding: 8px;
-  border: 1px solid #ccc;
+.titulo-principal {
+  background-color: var(--accent); /* antes #ff7b00 */
+  color: white;
+  padding: 12px 24px;
   border-radius: 8px;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+.seccion {
+  margin-bottom: 32px;
+}
+
+.seccion h2 {
+  background-color: #ff9a3c; /* color similar a var(--accent), puedes ajustar */
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Si quieres que sea exactamente de la paleta, usa esto: */
+/* background-color: var(--primary); */
+
+.tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.tarjeta-orden {
+  background-color: white;
+  border: 2px solid var(--accent); /* antes #ff9a3c */
+  border-radius: 12px;
+  padding: 16px;
+  width: 200px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.tarjeta-orden:hover {
+  transform: scale(1.03);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+  z-index: 999;
+}
+
+.modal-contenido {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.modal-contenido input[type="number"] {
   width: 100%;
   max-width: 120px;
-  margin-bottom: 10px;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .tarjetas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tarjeta-orden {
+    width: 90%;
+  }
+}
+
+.ingredientes {
+  margin-bottom: 24px;
+  background-color: var(--input-bg); /* antes #fdf7f0 */
+  border: 1px solid var(--disable); /* antes #ffcc9a, un poco más suave */
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.ingredientes h4 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: var(--accent); /* antes #ff7b00 */
+  border-bottom: 1px solid rgba(211, 146, 85, 0.5); /* adaptado a color similar */
+  padding-bottom: 6px;
+}
+
+.bloque-ingredientes {
+  padding-left: 12px;
+}
+
+.bloque-ingredientes p {
+  margin: 12px 0 4px;
+  font-weight: 600;
+  color: #444;
+}
+
+.bloque-ingredientes ul {
+  list-style-type: none;
+  padding-left: 12px;
+  margin: 0 0 12px 0;
+}
+
+.bloque-ingredientes li {
+  margin-bottom: 4px;
+  padding-left: 8px;
+  border-left: 2px solid var(--accent); /* antes #ff9a3c */
+  font-size: 14px;
+  color: #333;
+}
+
+.badge {
+  font-size: 12px;
+  margin-left: 8px;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 button {
-  margin-top: 10px;
-  padding: 6px 12px;
-  background-color: #17a2b8;
-  color: #fff;
+  padding: 8px 16px;
+  background-color: var(--accent); /* antes #ff7b00 */
   border: none;
   border-radius: 6px;
-  font-size: 14px;
+  color: white;
   cursor: pointer;
+  margin-right: 8px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #138496;
+  background-color: var(--primary); /* antes #e66a00 */
+}
+
+.listo {
+  background-color: #28a745 !important; /* Verde (no en paleta) */
+}
+
+.cerrar {
+  background-color: #6c757d; /* Gris oscuro */
 }

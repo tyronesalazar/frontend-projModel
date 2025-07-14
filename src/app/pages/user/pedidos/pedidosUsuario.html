@@ -1,0 +1,75 @@
+<div class="estado-container">
+  <h1>Mis pedidos en curso</h1>
+  <button routerLink="/menu" class="volver-btn">← Volver al menú</button>
+  <div *ngIf="!isLoading">
+    <div class="pedido-box" *ngFor="let pedido of pedidos">
+      <!-- ENCABEZADO CLICKABLE -->
+      <div
+        class="pedido-info clickable"
+        (click)="pedido.expandido = !pedido.expandido"
+      >
+        <h2>
+          Id del pedido: {{ pedido.id_pedido }}
+          <span class="arrow" [class.up]="pedido.expandido" aria-hidden="true"
+            >▼</span
+          >
+        </h2>
+
+        <p><strong>Fecha:</strong> {{ pedido.fecha | date : "medium" }}</p>
+        <p>
+          <strong>Estado:</strong>
+          <span
+            [ngClass]="{
+              'estado-espera': pedido.estado === 'pendiente',
+              'estado-preparacion': pedido.estado === 'preparacion',
+              'estado-listo': pedido.estado === 'listo'
+            }"
+          >
+            {{ pedido.estado }}
+          </span>
+        </p>
+        <p><strong>Total:</strong> ${{ pedido.total | number : "1.2-2" }}</p>
+      </div>
+
+      <!-- DETALLES EXPANDIBLES -->
+      <div class="detalle-platillos" *ngIf="pedido.expandido">
+        <div class="plato-card" *ngFor="let plato of pedido.platos">
+          <div class="header">
+            <h3>{{ plato.nombre_plato }}</h3>
+            <span class="total">Subtotal: ${{ plato.subtotal }}</span>
+          </div>
+
+          <p><strong>Cantidad:</strong> {{ plato.cantidad }}</p>
+
+          <div class="detalle">
+            <ng-container *ngFor="let tipo of tiposIngrediente">
+              <ng-container
+                *ngIf="filtrarIngredientes(plato.ingredientes, tipo).length"
+              >
+                <p>
+                  <strong
+                    >{{ tipo.charAt(0).toUpperCase() + tipo.slice(1) }}:</strong
+                  >
+                </p>
+                <ul>
+                  <li
+                    *ngFor="
+                      let ing of agruparIngredientes(
+                        filtrarIngredientes(plato.ingredientes, tipo)
+                      )
+                    "
+                  >
+                    {{ ing.nombre
+                    }}<span *ngIf="ing.cantidad > 1">
+                      × {{ ing.cantidad }}</span
+                    >
+                  </li>
+                </ul>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

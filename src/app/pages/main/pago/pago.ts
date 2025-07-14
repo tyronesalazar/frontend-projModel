@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CarritoService } from '../../../services/carrito.service';
 import { Router, RouterLink } from '@angular/router';
 import { SocketService } from '../../../services/socket.service';
+import { PedidoService } from '../../../services/pedido.service';
 
 @Component({
   selector: 'app-pago',
@@ -14,6 +15,9 @@ import { SocketService } from '../../../services/socket.service';
 export class Pago {
   total: number = 0;
   metodoPago: string = 'tarjeta';
+  loading: boolean = false;
+  carrito: any[] = [];
+  userId: number = 0;
   datosTarjeta: any = {
     numero: '',
     expira: '',
@@ -22,7 +26,7 @@ export class Pago {
 
   constructor(
     private http: CarritoService,
-    private socketService: SocketService,
+    private pedidoService: PedidoService,
     private router: Router
   ) {}
   ngOnInit(): void {
@@ -34,12 +38,28 @@ export class Pago {
         console.error('Error al obtener el total del carrito:', error);
       },
     });
+    this.http.obtenerCarrito().subscribe({
+      next: (data) => {
+        this.carrito = data;
+      },
+      error: (error) => {
+        console.error('Error al obtener el carrito:', error);
+      },
+    });
   }
   confirmarPago(metodo: string) {
-    this.router.navigate(['/menu/pago/sucess'], {
-      queryParams: {
-        tipo: metodo,
-        mesa: '1',
+    this.loading = true;
+    this.pedidoService.crearPedido(this.carrito).subscribe({
+      next: (data) => {
+        this.router.navigate(['/menu/pago/sucess'], {
+          queryParams: {
+            tipo: metodo,
+            mesa: '1',
+          },
+        });
+      },
+      error: (error) => {
+        console.error('Error al crear el pedido:', error);
       },
     });
   }

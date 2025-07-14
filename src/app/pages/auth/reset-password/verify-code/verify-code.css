@@ -3,6 +3,7 @@
   margin: auto;
   padding: 40px 20px;
   text-align: center;
+  margin-top: 100px;
 }
 
 h2 {
@@ -60,9 +61,9 @@ h2 {
 }
 
 .code-simulation-banner {
-  background-color: #fef3c7;
-  border: 1px solid #facc15;
-  color: #92400e;
+  background-color: rgb(255, 255, 148); /* Fondo claro */
+  border: 1px solid var(--yellow); /* Borde amarillo vibrante */
+  color: var(--text-secondary); /* Texto marrón oscuro */
   padding: 12px 16px;
   border-radius: 12px;
   margin-bottom: 20px;

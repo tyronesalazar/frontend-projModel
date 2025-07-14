@@ -12,6 +12,7 @@ interface PlatoResponse {
 })
 export class MenuService {
   private apiUrl = 'https://backend-projmodel.onrender.com/';
+  // private apiUrl = 'http://localhost:3000/';
   private getMenuUrl = this.apiUrl + 'api/platos/all';
   private getFavoritesUrl = this.apiUrl + 'api/usuarios/favorites/';
   private getPlatoUrl = this.apiUrl + 'api/platos/';

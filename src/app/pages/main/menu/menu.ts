@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { Router, RouterLink } from '@angular/router';
 import { PlatoInterface } from '../../../models/plato.model';
+import { SocketService } from '../../../services/socket.service';
 
 @Component({
   selector: 'app-menu',
@@ -18,13 +19,18 @@ export class Menu {
   error = '';
   isLoading = true;
   placeHolder = [1, 2, 3, 4];
+  notification = false;
   constructor(
     private http: MenuService,
-
+    private socketService: SocketService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.socketService.on('actualizar-estado-pedido-usuario', (data: any) => {
+      console.log(data);
+      this.notification = true;
+    });
     this.http.getFavorites().subscribe({
       next: (response) => {
         if (response.error) {
@@ -45,10 +51,10 @@ export class Menu {
       },
     });
   }
-  agregar(plato: any): void {
-    // this.socketServive.emit('nuevo-pedido', plato);
-  }
   verPlato(id: string): void {
     this.router.navigate(['/menu/plato', id]);
+  }
+  toggleNotification() {
+    this.notification = !this.notification;
   }
 }

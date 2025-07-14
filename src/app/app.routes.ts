@@ -13,6 +13,7 @@ import { Plato } from './pages/main/menu/plato/plato';
 import { Carrito } from './pages/main/menu/carrito/carrito';
 import { Pago } from './pages/main/pago/pago';
 import { ConfirmacionPago } from './pages/main/pago/confirmacion-pago/confirmacion-pago';
+import { PedidosUsuario } from './pages/user/pedidos/pedidosUsuario';
 
 export const routes: Routes = [
   { path: '', canActivate: [authGuard], component: Main },
@@ -61,6 +62,10 @@ export const routes: Routes = [
   {
     path: 'menu/pago/sucess',
     component: ConfirmacionPago,
+  },
+  {
+    path: 'user/pedidos',
+    component: PedidosUsuario,
   },
   { path: 'menu', component: Menu },
 ];

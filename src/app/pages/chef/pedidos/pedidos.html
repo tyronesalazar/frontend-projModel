@@ -1,45 +1,119 @@
-<div class="cocina-container">
-  <h2>📋 Pedidos recibidos</h2>
+<!-- cocina.component.html -->
+<div class="contenedor-ordenes">
+  <h1 class="titulo-principal">Ordenes</h1>
 
-  <div *ngFor="let pedido of pedidos" class="pedido-cocina">
-    <h3>Mesa {{ pedido.mesa }} - Estado: {{ pedido.estado }}</h3>
-    <p><strong>Nota:</strong> {{ pedido.nota || "Sin nota" }}</p>
-
-    <div *ngFor="let plato of pedido.platos">
-      <h4>{{ plato.nombre_plato }} x{{ plato.cantidad }}</h4>
-      <p><strong>Subtotal:</strong> ${{ plato.subtotal }}</p>
-
-      <div *ngIf="plato.ingredientes.length">
-        <p><strong>Ingredientes personalizados:</strong></p>
+  <!-- COLA DE PEDIDOS -->
+  <section class="seccion seccion-cola">
+    <h2>Cola de Pedidos</h2>
+    <div class="tarjetas">
+      <div
+        class="tarjeta-orden"
+        *ngFor="let pedido of colaPedidos"
+        (click)="seleccionarPedido(pedido)"
+      >
+        <h3>Orden #{{ pedido.id_pedido }}</h3>
+        <p>Usuario ID: {{ pedido.id_usuario }}</p>
         <ul>
-          <li *ngFor="let ing of plato.ingredientes">
-            {{ ing.nombre }}
-            <span
-              [ngClass]="ing.accion === 'agregado' ? 'agregado' : 'eliminado'"
-            >
-              ({{ ing.accion === "agregado" ? "🟢 agregado" : "🔴 eliminado" }})
-            </span>
+          <li *ngFor="let plato of pedido.platos">
+            {{ plato.nombre_menu }} x{{ plato.cantidad }}
           </li>
         </ul>
       </div>
     </div>
+  </section>
 
-    <!-- Si aún no se ha estimado -->
-    <div *ngIf="!pedido.estimadoMinutos">
-      <label>Tiempo estimado de entrega (minutos):</label>
-      <input type="number" [(ngModel)]="pedido.estimadoInput" min="1" />
-      <button (click)="enviarEstimado(pedido)">Enviar estimado</button>
-    </div>
+  <!-- DETALLES DEL PEDIDO SELECCIONADO -->
+  <section class="modal" *ngIf="pedidoSeleccionado">
+    <div class="modal-contenido">
+      <h3>Orden #{{ pedidoSeleccionado.id_pedido }}</h3>
+      <p>
+        <strong>Usuario ID: {{ pedidoSeleccionado.id_usuario }}</strong>
+      </p>
 
-    <!-- Si ya se estimó pero aún no está listo -->
-    <div *ngIf="pedido.estimadoMinutos && !pedido.platilloListo">
-      <p>🕒 Entrega estimada en: {{ pedido.estimadoMinutos }} minutos</p>
-      <button (click)="marcarPlatilloListo(pedido)">Marcar como listo</button>
-    </div>
+      <label>Ingresar Tiempo de Entrega estimado (minutos):</label>
+      <input
+        type="number"
+        [(ngModel)]="tiempoEstimado"
+        min="1"
+        placeholder="Ej: 10"
+        *ngIf="colaPedidos.includes(pedidoSeleccionado)"
+      />
 
-    <!-- Si ya está listo -->
-    <div *ngIf="pedido.platilloListo">
-      <p class="listo">✅ Platillo listo para entrega</p>
+      <div class="ingredientes" *ngFor="let plato of pedidoSeleccionado.platos">
+        <h4>🍽️ {{ plato.nombre_menu }} x{{ plato.cantidad }}</h4>
+        <div class="bloque-ingredientes">
+          <div *ngFor="let tipo of tiposIngrediente">
+            <p>
+              <strong>{{ tipo }}:</strong>
+            </p>
+            <ul>
+              <li *ngFor="let ing of agruparIngredientes(plato, tipo)">
+                {{ ing.nombre }} x{{ ing.cantidad }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <button
+        (click)="enviarEstimado(pedidoSeleccionado)"
+        *ngIf="colaPedidos.includes(pedidoSeleccionado)"
+      >
+        Enviar Tiempo
+      </button>
+      <hr style="margin: 20px 0" />
+      <button class="cerrar" (click)="cerrarDetalles()">Cerrar</button>
     </div>
-  </div>
+  </section>
+
+  <!-- PLATOS EN PREPARACIÓN -->
+  <section class="seccion seccion-preparacion">
+    <h2>Platos en Preparación</h2>
+    <div class="tarjetas">
+      <div
+        class="tarjeta-orden"
+        *ngFor="let pedido of pedidosEnPreparacion"
+        (click)="seleccionarPedido(pedido)"
+      >
+        <h3>Orden #{{ pedido.id_pedido }}</h3>
+        <p>Usuario ID: {{ pedido.id_usuario }}</p>
+        <ul>
+          <li *ngFor="let plato of pedido.platos">
+            {{ plato.nombre_menu }} x{{ plato.cantidad }}
+          </li>
+        </ul>
+        <button
+          class="listo"
+          (click)="marcarListo(pedido); $event.stopPropagation()"
+        >
+          Listo ✅
+        </button>
+      </div>
+    </div>
+  </section>
+  <!-- PEDIDOS LISTOS PARA ENTREGA -->
+  <section class="seccion seccion-listos">
+    <h2>Pedidos Listos para Entrega</h2>
+    <div class="tarjetas">
+      <div
+        class="tarjeta-orden listo-entrega"
+        *ngFor="let pedido of pedidosListos"
+        (click)="seleccionarPedido(pedido)"
+      >
+        <h3>Orden #{{ pedido.id_pedido }}</h3>
+        <p>Usuario ID: {{ pedido.id_usuario }}</p>
+        <ul>
+          <li *ngFor="let plato of pedido.platos">
+            {{ plato.nombre_menu }} x{{ plato.cantidad }}
+          </li>
+        </ul>
+        <button
+          class="entregado"
+          (click)="marcarEntregado(pedido); $event.stopPropagation()"
+        >
+          Entregado 🚚
+        </button>
+      </div>
+    </div>
+  </section>
 </div>

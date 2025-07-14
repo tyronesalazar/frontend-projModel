@@ -8,7 +8,12 @@ export class SocketService {
   private socket!: Socket;
 
   constructor() {
-    this.socket = io('https://backend-projmodel.onrender.com/');
+    this.socket = io('https://backend-projmodel.onrender.com/', {
+      // this.socket = io('http://localhost:3000/', {
+      auth: {
+        token: localStorage.getItem('token') || '',
+      },
+    });
   }
 
   emit(event: string, data: any) {

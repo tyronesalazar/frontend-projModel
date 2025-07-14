@@ -1,15 +1,12 @@
 <div class="pedidos-container">
-  <!-- Banner -->
   <div class="carrito-banner">
     <h1>🛒 Mi carrito</h1>
   </div>
 
-  <!-- Botón volver -->
   <div class="volver-wrap">
     <button class="boton-volver" routerLink="/menu">← Volver al menú</button>
   </div>
 
-  <!-- Lista pedidos -->
   <div *ngIf="!isLoading; else loadingTemplate">
     <div class="pedido-card" *ngFor="let pedido of carrito">
       <div class="header">
@@ -76,7 +73,6 @@
     </div>
   </ng-template>
 
-  <!-- Finalizar -->
   <div class="finalizar-wrap" *ngIf="!isLoading && carrito.length">
     <div class="nota-mesa-wrap">
       <label for="mesaCliente"><strong>Número de mesa:</strong></label>

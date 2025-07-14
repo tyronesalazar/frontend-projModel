@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CarritoService {
   private apiUrl = 'https://backend-projmodel.onrender.com/';
+  // private apiUrl = 'http://localhost:3000/';
   private addToCartUrl = this.apiUrl + 'api/carrito/agregar';
   private getCartUrl = this.apiUrl + 'api/carrito/';
 
