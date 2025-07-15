@@ -8,7 +8,10 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const token = localStorage.getItem('token');
 
   const esRutaPublica =
-    req.url.includes('/login') || req.url.includes('/registro');
+    req.url.includes('/login') ||
+    req.url.includes('/registro') ||
+    req.url.includes('/check-email') ||
+    req.url.includes('/reset-password/verify-code');
   if (esRutaPublica) {
     return next(req);
   }

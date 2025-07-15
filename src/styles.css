@@ -43,3 +43,9 @@ a {
     transform: rotate(360deg);
   }
 }
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}

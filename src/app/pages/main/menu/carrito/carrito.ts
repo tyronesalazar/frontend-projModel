@@ -17,6 +17,7 @@ export class Carrito {
   isLoading = true;
   notaCliente = '';
   mesaCliente = 0;
+  error = '';
   constructor(private http: CarritoService, private router: Router) {}
   ngOnInit(): void {
     this.http.obtenerCarrito().subscribe((data) => {
@@ -50,7 +51,13 @@ export class Carrito {
     }, 0);
   }
   finalizarPedido() {
-    this.router.navigate(['/menu/pago']);
+    if (this.mesaCliente === 0) {
+      this.error = 'El número de mesa es requerido';
+      return;
+    }
+    this.router.navigate(['/menu/pago'], {
+      queryParams: { mesa: this.mesaCliente },
+    });
   }
   eliminarPedido(id: number) {
     this.http.eliminarPedido(id).subscribe({

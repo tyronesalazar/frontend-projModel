@@ -121,7 +121,6 @@
   color: #a52118;
 }
 
-/* Finalizar */
 .finalizar-wrap {
   position: sticky;
   bottom: 0;
@@ -162,7 +161,6 @@
   transform: scale(1.02);
 }
 
-/* Skeleton */
 ngx-skeleton-loader {
   display: block;
   background-color: #fceae7 !important;
@@ -170,6 +168,7 @@ ngx-skeleton-loader {
 
 .nota-mesa-wrap {
   margin-top: 20px;
+  margin-bottom: 16px; /* 👈 este margen separa del botón */
   display: flex;
   flex-direction: column;
   gap: 10px;

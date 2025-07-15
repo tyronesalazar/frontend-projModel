@@ -36,7 +36,8 @@
   <div class="efectivo-section" *ngIf="metodoPago === 'efectivo'">
     <p class="info">Un mesero se acercará a tu mesa para recoger el pago.</p>
     <button class="confirmar-btn" (click)="confirmarPago('efectivo')">
-      Confirmar pago en efectivo
+      <span *ngIf="!loading">Confirmar pago en efectivo</span>
+      <span *ngIf="loading" class="spinner"></span>
     </button>
   </div>
 
@@ -67,7 +68,8 @@
       <label>
         Fecha de expiración:
         <input
-          type="month"
+          type="text"
+          maxlength="4"
           [(ngModel)]="datosTarjeta.expiracion"
           name="expiracion"
           required
@@ -95,9 +97,11 @@
         />
       </label>
 
-      <button type="submit" class="confirmar-btn">
-        Confirmar pago con tarjeta
+      <button type="submit" class="confirmar-btn" [disabled]="loading">
+        <span *ngIf="!loading">Confirmar pago con tarjeta</span>
+        <span *ngIf="loading" class="spinner"></span>
       </button>
+      <p *ngIf="error" class="error">{{ error }}</p>
     </form>
   </div>
 </div>
