@@ -1,5 +1,9 @@
 # Proyecto2doParcial
 
+Repositorio que abarca todo el frontend del proyecto del segundo parcial de base de datos.
+
+Lo que se muestra a continuación es autogenerado al crear el proyecto en Angular.
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
 
 ## Development server
