@@ -12,7 +12,7 @@
         (click)="seleccionarPedido(pedido)"
       >
         <h3>Orden #{{ pedido.id_pedido }}</h3>
-        <p>Usuario ID: {{ pedido.id_usuario }}</p>
+        <p>Nombre cliente: {{ pedido.nombre_cliente }}</p>
         <ul>
           <li *ngFor="let plato of pedido.platos">
             {{ plato.nombre_menu }} x{{ plato.cantidad }}
@@ -27,7 +27,7 @@
     <div class="modal-contenido">
       <h3>Orden #{{ pedidoSeleccionado.id_pedido }}</h3>
       <p>
-        <strong>Usuario ID: {{ pedidoSeleccionado.id_usuario }}</strong>
+        <strong>Nombre cliente: {{ pedidoSeleccionado.nombre_cliente }}</strong>
       </p>
 
       <label>Ingresar Tiempo de Entrega estimado (minutos):</label>
@@ -76,7 +76,7 @@
         (click)="seleccionarPedido(pedido)"
       >
         <h3>Orden #{{ pedido.id_pedido }}</h3>
-        <p>Usuario ID: {{ pedido.id_usuario }}</p>
+        <p>Nombre cliente: {{ pedido.nombre_cliente }}</p>
         <ul>
           <li *ngFor="let plato of pedido.platos">
             {{ plato.nombre_menu }} x{{ plato.cantidad }}
@@ -101,7 +101,7 @@
         (click)="seleccionarPedido(pedido)"
       >
         <h3>Orden #{{ pedido.id_pedido }}</h3>
-        <p>Usuario ID: {{ pedido.id_usuario }}</p>
+        <p>Nombre cliente: {{ pedido.nombre_cliente }}</p>
         <ul>
           <li *ngFor="let plato of pedido.platos">
             {{ plato.nombre_menu }} x{{ plato.cantidad }}
