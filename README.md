@@ -1,6 +1,6 @@
 # Proyecto2doParcial
 
-Repositorio que abarca todo el frontend del proyecto del segundo parcial de base de datos.
+Este repositorio abarca todo el sistema frontend del proyecto del segundo parcial de la clase Modelamiento de Software
 
 Lo que se muestra a continuación es autogenerado al crear el proyecto en Angular.
 
