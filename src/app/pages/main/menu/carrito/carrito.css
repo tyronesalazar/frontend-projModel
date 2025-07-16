@@ -182,3 +182,12 @@ ngx-skeleton-loader {
   border: 1px solid #ccc;
   font-size: 1rem;
 }
+
+.finalizar-btn:hover:not(:disabled) {
+  background-color: var(--accent);
+}
+
+.finalizar-btn:disabled {
+  background-color: var(--disable);
+  cursor: not-allowed;
+}

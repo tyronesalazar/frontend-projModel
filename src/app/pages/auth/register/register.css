@@ -79,11 +79,6 @@
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
-.register-button:disabled {
-  background-color: var(--disable);
-  cursor: not-allowed;
-}
-
 .spinner {
   width: 20px;
   height: 20px;
@@ -124,4 +119,9 @@
   color: red;
   margin-top: 10px;
   font-weight: bold;
+}
+.register-button:disabled {
+  background-color: var(--disable);
+  background: linear-gradient(135deg, var(--disable), var(--disable));
+  cursor: not-allowed;
 }

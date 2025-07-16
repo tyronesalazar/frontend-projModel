@@ -11,7 +11,8 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     req.url.includes('/login') ||
     req.url.includes('/registro') ||
     req.url.includes('/check-email') ||
-    req.url.includes('/reset-password/verify-code');
+    req.url.includes('/reset-password/verify-code') ||
+    req.url.includes('/usuarios/create');
   if (esRutaPublica) {
     return next(req);
   }

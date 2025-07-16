@@ -32,6 +32,11 @@ export class Register {
   register() {
     this.http.register(this.name, this.email, this.password).subscribe({
       next: (response) => {
+        if (response.error) {
+          this.errorMessage = response.error.error;
+          this.isLoading = false;
+          return;
+        }
         this.router.navigate(['/login'], {
           queryParams: { correo: response.correo },
         });
