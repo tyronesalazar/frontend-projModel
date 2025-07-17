@@ -29,16 +29,6 @@
       <p>
         <strong>Nombre cliente: {{ pedidoSeleccionado.nombre_cliente }}</strong>
       </p>
-
-      <label>Ingresar Tiempo de Entrega estimado (minutos):</label>
-      <input
-        type="number"
-        [(ngModel)]="tiempoEstimado"
-        min="1"
-        placeholder="Ej: 10"
-        *ngIf="colaPedidos.includes(pedidoSeleccionado)"
-      />
-
       <div class="ingredientes" *ngFor="let plato of pedidoSeleccionado.platos">
         <h4>🍽️ {{ plato.nombre_menu }} x{{ plato.cantidad }}</h4>
         <div class="bloque-ingredientes">
@@ -56,10 +46,10 @@
       </div>
 
       <button
-        (click)="enviarEstimado(pedidoSeleccionado)"
+        (click)="empezarPreparacion(pedidoSeleccionado)"
         *ngIf="colaPedidos.includes(pedidoSeleccionado)"
       >
-        Enviar Tiempo
+        Empezar a Preparar
       </button>
       <hr style="margin: 20px 0" />
       <button class="cerrar" (click)="cerrarDetalles()">Cerrar</button>

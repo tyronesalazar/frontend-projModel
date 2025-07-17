@@ -15,7 +15,6 @@ export class Pedidos {
   pedidosEnPreparacion: any[] = [];
   pedidosListos: any[] = [];
   pedidoSeleccionado: any = null;
-  tiempoEstimado: number | null = null;
   ingredientes: any[] = [];
 
   tiposIngrediente: string[] = [
@@ -71,17 +70,13 @@ export class Pedidos {
   }
   seleccionarPedido(pedido: any) {
     this.pedidoSeleccionado = pedido;
-    this.tiempoEstimado = null;
   }
 
   cerrarDetalles() {
     this.pedidoSeleccionado = null;
-    this.tiempoEstimado = null;
   }
 
-  enviarEstimado(pedido: any) {
-    if (!this.tiempoEstimado) return;
-
+  empezarPreparacion(pedido: any) {
     this.pedidosEnPreparacion.push(pedido);
     this.colaPedidos = this.colaPedidos.filter(
       (p) => p.id_pedido !== pedido.id_pedido
